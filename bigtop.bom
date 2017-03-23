@@ -338,7 +338,7 @@ bigtop {
     }
     'bigtop-groovy' {
       name    = 'bigtop-groovy'
-      version { base = '2.4.4'; pkg = '2.4.4'; release = 1}
+      version { base = '2.4.10'; pkg = '2.4.10'; release = 1}
       relNotes = "Groovy: a dynamic language for the Java platform"
       tarball { destination = "$name-${version.base}.tar.gz";
                 source      = "apache-groovy-binary-${version.base}.zip"}
@@ -423,7 +423,7 @@ bigtop {
     'zeppelin' {
       name    = 'zeppelin'
       relNotes = 'Apache Zeppelin'
-      version { base = '0.6.2'; pkg = base; release = 1 }
+      version { base = '0.7.0'; pkg = base; release = 1 }
       tarball { source      = "$name-${version.base}.tgz"
                 destination = "$name-${version.base}.tar.gz" }
       url     { download_path = "/$name/$name-${version.base}/"
@@ -443,10 +443,10 @@ bigtop {
     'apex' {
       name    = 'apex'
       relNotes = 'Apache Apex'
-      version { base = '3.4.0'; pkg = base; release = 1 }
-      tarball { source      = "$name-${version.base}-source-release.tar.gz"
+      version { base = '3.5.0'; pkg = base; release = 1 }
+      tarball { source      = "apache-$name-core-${version.base}-source-release.tar.gz"
                 destination = "$name-${version.base}.tar.gz" }
-      url     { download_path = "/incubator/$name/v${version.base}/"
+      url     { download_path = "/$name/apache-$name-core-${version.base}/"
                 site = "${apache.APACHE_MIRROR}/${download_path}"
                 archive = "${apache.APACHE_ARCHIVE}/${download_path}" }
     }
@@ -462,12 +462,21 @@ bigtop {
     'gpdb' {
       name    = 'gpdb'
       relNotes = 'GreenPlum'
-      version { base = '4.3.99.0'; pkg = base; release = 1 }
-      tarball { source      = "master.zip"
-                destination = "$name-${version.base}.tar.gz" }
-      url     { download_path = "pub/greenplum/$name/"
-                site = "https://github.com/greenplum-db/gpdb/archive"
-                archive = "site" }
+      version { base = '5.0.0-alpha.0'; pkg = '5.0.0+alpha.0'; release = 1 }
+      tarball { destination = "$name-${version.base}.tar.gz"
+                source      = "${version.base}.tar.gz" }
+      url     { site = "https://github.com/greenplum-db/gpdb/archive/"
+                archive = site }
+    }
+    'ambari' {
+      name    = 'ambari'
+      relNotes = 'Apache Ambari'
+      version { base = '2.4.2'; pkg = base; release = 1 }
+      tarball { destination = "apache-$name-${version.base}-src.tar.gz"
+                source      = destination }
+      url     { download_path = "/$name/$name-${version.base}/"
+                site = "${apache.APACHE_MIRROR}/${download_path}"
+                archive = "${apache.APACHE_ARCHIVE}/${download_path}" }
     }
   }
 }
